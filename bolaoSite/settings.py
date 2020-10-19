@@ -125,7 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_ROOT = /home/stackovercrow/bolao2014/static
+STATIC_ROOT = /home/stackovercrow/stackovercrow.pythonanywhere.com/static
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
 
