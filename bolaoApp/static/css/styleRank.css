@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+body{
+    background-image: url("../images/siteBackground.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: sans-serif;
+}
+
+ul#navList a{
+	text-decoration: none;
+	color: black;
+}
+
+section#mainSection{
+    text-align: center;
+    font-size: 14pt;
+    background-color: rgba(77, 71, 71, 0.5);
+    width: 90%;
+    height: 95%;
+    margin: auto;
+    display: block;
+}
+
+div#ranking{
+	margin: auto;
+    overflow: scroll;
+    overflow-x: hidden; 
+    width: 500px;
+    height: 300px;
+    font-size: 12pt;
+    background-color: rgba(255, 255, 255, .5);
+}
+
+div#ranking h1{
+    background-color: grey;
+    font-size: 12pt;
+}
+
+nav#navMenu{
+	background-color: rgb(214, 204, 67);
+	border-style: solid;
+	border-width: 15px;
+	border-color: rgb(67, 158, 55);
+}
+
+ul#navList{
+    list-style: none;
+    text-align: center;
+    padding: 15px;
+}
+
+ul#navList li{
+    display: inline-block;
+    margin: auto;
+    padding: 30px;
+}
+
+
+footer{
+    color: white;
+    clear: both;
+    position: relative;
+    padding-top: 10%;
+}
+
+footer p{
+    margin-top: -10px;
+    text-align: center;
+    font-size: 12pt;
+}
+
+footer a{
+    text-decoration: none;
+    color: white;
+}

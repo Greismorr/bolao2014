@@ -1,0 +1,33 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8" lang="pt-BR">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Login</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/styleLogin.css' %}">
+    </head>
+
+    <body>
+		<div id="loginStruct">
+			{% block title %}
+			<h1>Insira suas credenciais</h1>
+			{% endblock %}
+
+			{% load crispy_forms_tags %}
+
+			{% block content %}
+				<form method="post" class="from-group">
+				{% csrf_token %}
+				{{form|crispy}}
+				<button type="submit" class="btn btn-success">Login</button>	
+				</form>
+			{% endblock %}
+			<footer>
+				<p>Feito por <a href="https://github.com/stackOvercrow/">Gabriel dos Reis</a></p>
+				<p>Outubro de 2020</p>
+			</footer>
+		</div>
+    </body>
+</html>

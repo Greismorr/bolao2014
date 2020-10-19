@@ -1,0 +1,21 @@
+body{
+    text-align: center;
+    background-image: url("../images/siteBackground.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: sans-serif;
+}
+
+div#loginStruct{
+    width: 500px;
+    margin: auto;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 1px 1px 3px black;
+    background-color: rgba(255, 255, 255, .8);
+    border-style: solid;
+    border-color: rgba(205, 205, 205, .8);
+}
