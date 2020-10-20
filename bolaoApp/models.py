@@ -72,8 +72,8 @@ class Account(AbstractBaseUser):
 class Bet(models.Model):
     bettor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     game_name = models.CharField(max_length=28)
-    goals_team_one = models.PositiveIntegerField(default=0)
-    goals_team_two = models.PositiveIntegerField(default=0)
+    goals_team_one = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(99)])
+    goals_team_two = models.PositiveIntegerField(default=0, validators=[MaxValueValidator(99)])
 
     def __str__(self):
         return self.game_name
