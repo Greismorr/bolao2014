@@ -15,6 +15,7 @@ class BetForm(forms.ModelForm):
         fields = ('goals_team_one', 'goals_team_two', 'game_name',)
         labels = {'goals_team_one': 'Gols do Primeiro Time', 'goals_team_two': 'Gols do Segundo Time',}
 
+    # Checa se o usuário já fez uma aposta para aquele jogo
     def clean_game_name(self):
         game_name = self.cleaned_data.get('game_name')
         bettor = self.request.user
