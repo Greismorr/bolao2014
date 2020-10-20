@@ -14,17 +14,15 @@ from django.http import HttpResponseRedirect
 def load_index(request):
     return render(request, 'bolaoApp/index.html', {})
 
-
 def load_games(request):
     games = Game.objects.filter(winner='Partida Ainda Não Finalizada').order_by('last_day')
     return render(request, 'bolaoApp/partidas.html', {'games': games})
-
 
 def load_ranking(request):
     accounts = Account.objects.order_by('-money_won')
     return render(request, 'bolaoApp/ranking.html', {'accounts': accounts})
 
-
+@login_required(login_url='/login/')
 def load_bet_form(request):
     BetForm.base_fields['game_name'] = forms.ModelChoiceField(queryset=Game.objects.filter(winner='Partida Ainda Não Finalizada').order_by('last_day'), empty_label=None)
 
@@ -43,7 +41,6 @@ def load_bet_form(request):
     else:
         form = BetForm(request=request)
     return render(request, 'bolaoApp/apostar.html', {'form': form})
-
 
 def login_page(request):
     if request.user.is_authenticated:
