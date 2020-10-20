@@ -32,8 +32,11 @@
 
             <div id="ranking">
                 {% for account in accounts %}
-                    <h1>{{ account }}</h1>
-                    <p>Ganhos: {{ account.money_won }}</p>
+                    {% if account.is_superuser %}
+                    {% else %}
+                        <h1>{{ account }}</h1>
+                        <p>Ganhos: {{ account.money_won }}</p>
+                    {% endif %}
                 {% endfor %}
             </div>
 
