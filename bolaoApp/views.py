@@ -10,6 +10,7 @@ from .forms import BetForm
 from .forms import registration_form
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 def load_index(request):
     return render(request, 'bolaoApp/index.html', {})
