@@ -29,7 +29,8 @@
             </nav>
 
             <h1>Façam suas apostas.</h1>
-
+		
+	    <!-- Retorna todos os usuários que não são superusuários e seus ganhos. -->
             <div id="ranking">
                 {% for account in accounts %}
                     {% if account.is_superuser %}
