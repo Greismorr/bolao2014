@@ -92,6 +92,7 @@ class Game(models.Model):
     def __str__(self):
         return self.team_one + " X " + self.team_two
 
+    #Conta a quantidade de vencedores e diz se o jogo empatou ou teve um vencedor.
     def check_winner_and_result(self, bets):
         there_is_winner = 0
         winners = 0
@@ -122,8 +123,8 @@ class Game(models.Model):
                     winners += 1
         return winners
 
+    #Adiciona créditos à conta
     def add_credits(self, account, winners, bets_count):
-
         if winners == 0:
             account.credits += 5
         else:
@@ -133,6 +134,7 @@ class Game(models.Model):
             account.credits += prize
         account.save()
 
+    #Diz qual das duas equipes venceu a partida
     def set_winner(self):
         if self.goals_team_one > self.goals_team_two:
             self.winner = self.team_one
@@ -150,11 +152,13 @@ class Game(models.Model):
             winner_exact_draw = 0
             winners = self.check_winner_and_result(bets)
 
+            #Se ninguém ganhar, os créditos são retornados.
             if winners == 0:
                 for bet in bets:
                     account = Account.objects.get(username=bet.bettor)
                     self.add_credits(account, winners, float(len(bets)))
 
+            #Distribui o valor do prêmio.
             for bet in bets:
                 if self.ended_in == "win":
                     if bet.goals_team_one == self.goals_team_one and bet.goals_team_two == self.goals_team_two:
