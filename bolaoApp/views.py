@@ -25,7 +25,7 @@ def load_games(request):
     return render(request, 'bolaoApp/partidas.html', {'games': games})
 
 def load_ranking(request):
-    accounts = Account.objects.order_by('-money_won')
+    accounts = Account.objects.exclude(is_superuser=True).order_by('-money_won')
     return render(request, 'bolaoApp/ranking.html', {'accounts': accounts})
 
 @login_required

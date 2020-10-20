@@ -34,11 +34,8 @@
 	    <!-- Retorna todos os usuários que não são superusuários e seus ganhos. -->
             <div id="ranking">
                 {% for account in accounts %}
-                    {% if account.is_superuser %}
-                    {% else %}
-                        <h1>{{ account }}</h1>
-                        <p>Ganhos: {{ account.money_won }}</p>
-                    {% endif %}
+                    <h1>{{ account }}</h1>
+                    <p>Ganhos: {{ account.money_won }}</p>
                 {% endfor %}
             </div>
 
