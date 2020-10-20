@@ -24,6 +24,7 @@ def load_games(request):
     games = Game.objects.filter(winner='Aposta Ainda Não Finalizada', last_day__gte=datetime.now()).order_by('last_day')
     return render(request, 'bolaoApp/partidas.html', {'games': games})
 
+    # Mostra todos os usuários ordenados pelos ganhos no site. Administradores não aparecem.
 def load_ranking(request):
     accounts = Account.objects.exclude(is_superuser=True).order_by('-money_won')
     return render(request, 'bolaoApp/ranking.html', {'accounts': accounts})
