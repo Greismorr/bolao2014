@@ -85,14 +85,14 @@ class Game(models.Model):
     team_two = models.CharField(max_length=24)
     goals_team_two = models.PositiveIntegerField(default=0)
     game_ended = models.BooleanField(default=False)
-    winner = models.CharField(max_length=28, default="Partida Ainda Não Finalizada")
+    winner = models.CharField(max_length=28, default="Aposta Ainda Não Finalizada")
     last_day = models.DateField()
     ended_in = None
 
     def __str__(self):
         return self.team_one + " X " + self.team_two
 
-    #Conta a quantidade de vencedores e diz se o jogo empatou ou teve um vencedor.
+    #Conta a quantidade de apostadores vencedores e diz se o jogo empatou ou não.
     def check_winner_and_result(self, bets):
         there_is_winner = 0
         winners = 0

@@ -11,12 +11,17 @@ from .forms import registration_form
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 def load_index(request):
     return render(request, 'bolaoApp/index.html', {})
 
+# Carrega jogos que ainda estão recebendo apostas.
+
 def load_games(request):
-    games = Game.objects.filter(winner='Partida Ainda Não Finalizada').order_by('last_day')
+    # O Filtro de datas permite que os jogos sejam ocultos assim que forem expirados.
+
+    games = Game.objects.filter(winner='Aposta Ainda Não Finalizada', last_day__gte=datetime.now()).order_by('last_day')
     return render(request, 'bolaoApp/partidas.html', {'games': games})
 
 def load_ranking(request):
@@ -25,7 +30,7 @@ def load_ranking(request):
 
 @login_required
 def load_bet_form(request):
-    BetForm.base_fields['game_name'] = forms.ModelChoiceField(queryset=Game.objects.filter(winner='Partida Ainda Não Finalizada').order_by('last_day'), empty_label=None)
+    BetForm.base_fields['game_name'] = forms.ModelChoiceField(queryset=Game.objects.filter(winner='Aposta Ainda Não Finalizada', last_day__gte=datetime.now()).order_by('last_day'), empty_label=None)
 
     if request.method == "POST":
         form = BetForm(request.POST, request=request)

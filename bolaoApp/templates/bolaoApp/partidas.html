@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8" lang="pt-BR">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="{% static 'images/faviconFute.ico' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/styleGame.css' %}">
-        <title>Super Bolão 2014</title>
+        <title>Partidas</title>
     </head>
 
     <body>
@@ -19,13 +20,13 @@
                         	<a href="/admin/"><li class="nav-item">Admin</li></a>
                         {% else %}
                         	<li class="nav-item">{{user.credits}} Créditos - {{user.username}}</li>
-                        <a href="/logout/"><li class="nav-item">Sair</li></a>
                         {% endif %}
+                        <a href="/logout/"><li class="nav-item">Sair</li></a>
                     {% else %}
                         <a href="/login/"><li class="nav-item">Login</li></a>
                         <a href="/registrar/"><li class="nav-item">Registrar</li></a>
                     {% endif %}
-		</ul>
+		        </ul>
             </nav>
 
             <h1>Façam suas apostas.</h1>

@@ -4,7 +4,6 @@ from .models import Game
 from .models import Account
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
-from datetime import datetime
 
 class BetForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -31,14 +30,6 @@ class BetForm(forms.ModelForm):
     def check_credits(self, bettor):
         if bettor.credits < 5:
             raise forms.ValidationError('Créditos Insuficientes')
-            
-    def check_date(self):
-        today = datetime.now()
-        betGameName = self.cleaned_data.get('game_name')
-        game = Game.objects.get(betGameName)
-        
-        if today > game.last_day:
-            raise forms.ValidationError('A validade dessa aposta já foi vencida.')
 
 
 class registration_form(UserCreationForm):
