@@ -22,7 +22,7 @@ def load_ranking(request):
     accounts = Account.objects.order_by('-money_won')
     return render(request, 'bolaoApp/ranking.html', {'accounts': accounts})
 
-@login_required(login_url='/login/')
+@login_required
 def load_bet_form(request):
     BetForm.base_fields['game_name'] = forms.ModelChoiceField(queryset=Game.objects.filter(winner='Partida Ainda Não Finalizada').order_by('last_day'), empty_label=None)
 
