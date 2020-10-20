@@ -48,9 +48,7 @@ class UserChangeForm(forms.ModelForm):
         fields = ('username', 'password', 'firstname', 'lastname', 'credits', 'is_active', 'is_admin')
 
     def clean_password(self):
-        # Regardless of what the user provides, return the initial value.
-        # This is done here, rather than on the field, because the
-        # field does not have access to the initial value
+        # Retorna o valor inicial independente da input do usuário.
         return self.initial["password"]      
 
 
@@ -59,9 +57,7 @@ class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
 
-    # The fields to be used in displaying the User model.
-    # These override the definitions on the base UserAdmin
-    # that reference specific fields on auth.User.
+    # Os campos de usuário a serem mostrados.
     list_display = ('username', 'firstname', 'lastname', 'is_admin', 'credits', 'money_won')
     list_filter = ('is_admin',)
     fieldsets = (
@@ -69,8 +65,8 @@ class UserAdmin(BaseUserAdmin):
         ('Personal info', {'fields': ('firstname', 'lastname', 'credits', 'is_active', 'money_won',)}),
         ('Permissions', {'fields': ('is_admin',)}),
     )
-    # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
-    # overrides get_fieldsets to use this attribute when creating a user.
+    
+    # Esses atributos serão usados para criar novos usuários.
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
