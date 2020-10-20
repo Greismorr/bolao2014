@@ -13,10 +13,15 @@
                 <ul id="navList">
                     <a href="/"><li class="nav-item">Ínicio</li></a>
                     <a href="/ranking/"><li class="nav-item">Ranking</li></a>
+			
                     {% if user.is_authenticated %}
                         <a href="/partidas/"><li class="nav-item">Partidas</li></a>
-                        <li class="nav-item">{{user.credits}} Créditos - {{user.username}}</li>
+			{% if user.is_superuser %}
+                        	<a href="/admin/"><li class="nav-item">Admin</li></a>
+                        {% else %}
+                        	<li class="nav-item">{{user.credits}} Créditos - {{user.username}}</li>
                         <a href="/logout/"><li class="nav-item">Sair</li></a>
+			{% endif %}
                     {% else %}
                         <a href="/login/"><li class="nav-item">Login</li></a>
                     {% endif %}
